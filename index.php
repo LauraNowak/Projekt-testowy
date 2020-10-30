@@ -23,48 +23,54 @@ echo ("<li>$dzielenie");
 
 $mojtext = "<h1>To jest zadanie z PHP:</h1>";
 $moj_inny_text = "<h2>Kalkulator</h2>";
-echo $mojtext.$moj_inny_text;
+echo $mojtext.$moj_inny_text<?php
+    $conn = new mysqli("127.0.0.1","root","","Nauka1");  //Adres do którego się łączę, nazwa użytkownika, hasło, baza danych
+    $result = $conn->query('SELECT * FROM pracownicy');
+        echo("<table border=1>");
+        echo("<th>Id</th>"); //Nazwy Kolumn
+        echo("<th>Imie</th>");
+        echo("<th>Dzial</th>");
+        echo("<th>Zarobki</th>");
+            while($row=$result->fetch_assoc()){ // wyciąganie danych VVVVVVV
+                echo("<tr>");
+                    echo("<td>".$row["id_pracownicy"]."</td><td>".$row["imie"]."</td><td>".$row["dzial"]."</td><td>".$row["zarobki"]."</td>"); // wyciąga odpowiednie dane z bazy
 
-echo ("<br> wynik dodawania:".(2+3));
+                echo("</tr>");
+            }
 
-$liczba1 = 3;
-$liczba2 = 10;
+        echo("</table>");
+        $conn = new mysqli("127.0.0.1","root","","Nauka1");  
+    $result = $conn->query('SELECT * FROM pracownicy where imie like "%a"'); // wyświetla tylko kobiety
+        echo("<table border=1>");
+        echo("<th>Id</th>"); 
+        echo("<th>Imie</th>");
+        echo("<th>Dzial</th>");
+        echo("<th>Zarobki</th>");
+            while($row=$result->fetch_assoc()){ 
+                echo("<tr>");
+                    echo("<td>".$row["id_pracownicy"]."</td><td>".$row["imie"]."</td><td>".$row["dzial"]."</td><td>".$row["zarobki"]."</td>"); 
 
-echo $liczba1;
-echo $liczba2;
+                echo("</tr>");
+            }
 
-echo ("<ol>");
-echo ("<li> dodawanie: ".($liczba1+$liczba2));
-echo ("<li> mnozenie: ".($liczba1*$liczba2));
-echo ("<li> odejmowanie: ".($liczba1-$liczba2));
-echo ("<li> dzielenie: ".($liczba1/$liczba2));
-echo ("</ol>");
+        echo("</table>");
+        $conn = new mysqli("127.0.0.1","root","","Nauka1");  
+    $result = $conn->query('SELECT * FROM pracownicy where (dzial=1 or dzial=3)'); // wyświetla tylko pracowników z działu pierwszego i trzeciego
+        echo("<table border=1>");
+        echo("<th>Id</th>"); 
+        echo("<th>Imie</th>");
+        echo("<th>Dzial</th>");
+        echo("<th>Zarobki</th>");
+            while($row=$result->fetch_assoc()){ 
+                echo("<tr>");
+                    echo("<td>".$row["id_pracownicy"]."</td><td>".$row["imie"]."</td><td>".$row["dzial"]."</td><td>".$row["zarobki"]."</td>"); 
 
-echo ("to jest tabelka");
-echo ("<table border=1>");
-echo ("<tr><td> dodawanie: ".($liczba1+$liczba2)."</td></tr>");
-echo ("<tr><td> mnozenie: ".($liczba1*$liczba2)."</td></tr>");
-echo ("<tr><td> odejmowanie: ".($liczba1-$liczba2)."</td></tr>");
-echo ("<tr><td> dzielenie: ".($liczba1/$liczba2)."</td></tr>");
-echo ("</table");
+                echo("</tr>");
+            }
 
-for($i=1;$i<10;$i++){
-    echo("kwadrat liczb:".$i."*".$i."=".$i*$i." test</br>");
-}
+        echo("</table>");
 
-for($i=1;$i<10;$i++){
-    echo("kwadrat liczb:".$i.",liczba 2 x wieksza".$i*$i." test</br>");
-}
-
-//white (jak długo true albo 1 )
-
-while( $x <=100) {
-    echo "<br>".$x=$x=5;
-}
-
-while( $x <=100) { and 1==1
-    if($x <= 3 and 1==0)
-        echo "<b>The number is: $y</br><br>"
-} else {echo "<b>The number is: $y</br><br>"
-}
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
 ?>
