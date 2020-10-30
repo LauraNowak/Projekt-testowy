@@ -1,4 +1,5 @@
 <?php
+require_once("connect.php")
 $servername = "mysql-lauranowak23.alwaysdata.net";
 $username = "217184";
 $password = "Haslo123";
@@ -10,4 +11,4 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-?>
+?> 
