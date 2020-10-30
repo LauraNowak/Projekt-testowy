@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli("https://www.alwaysdata.com/en/","root","","Nauka1");  //Adres do którego się łączę, nazwa użytkownika, hasło, baza danych
+    $conn = new mysqli("https://www.alwaysdata.com/en/","217184","","Haslo123"); 
     $result = $conn->query('SELECT * FROM pracownicy');
         echo("<table border=1>");
         echo("<th>Id</th>"); //Nazwy Kolumn
@@ -14,7 +14,7 @@
             }
 
         echo("</table>");
-        $conn = new mysqli("https://www.alwaysdata.com/en/","root","","Nauka1");  
+        $conn = new mysqli("https://www.alwaysdata.com/en/","217184","","Haslo123");  
     $result = $conn->query('SELECT * FROM pracownicy where imie like "%a"'); // wyświetla tylko kobiety
         echo("<table border=1>");
         echo("<th>Id</th>"); 
@@ -29,7 +29,7 @@
             }
 
         echo("</table>");
-        $conn = new mysqli("https://www.alwaysdata.com/en/","root","","Nauka1");  
+        $conn = new mysqli("https://www.alwaysdata.com/en/","217184","","Haslo123");  
     $result = $conn->query('SELECT * FROM pracownicy where (dzial=1 or dzial=3)'); // wyświetla tylko pracowników z działu pierwszego i trzeciego
         echo("<table border=1>");
         echo("<th>Id</th>"); 
@@ -48,3 +48,4 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
           }
+?>
